@@ -33,7 +33,7 @@ public class MySQLExecutor extends Generator {
 
 	public MySQLExecutor(){}
 	
-	public void execute(){
+	public void execute(Map<String, String> map){
 		Gen tool = new Gen();
 		try {
 			// 用于建立目录和写文件
@@ -41,10 +41,7 @@ public class MySQLExecutor extends Generator {
 			MyFile myfile = new MyFile(this.src_folder, this.web_folder);
 
 			// 将需要添加的表存入map中，key为表名，value为生成的实体类的注释
-			Map<String, String> map = new HashMap<String, String>();
-			map.put("user".toLowerCase(), "用户表");
-			map.put("material".toLowerCase(), "物料表");
-			map.put("detection".toLowerCase(), "检测表");
+			
 
 			// 准备表对象
 			List<TableInfo> tables = getTableInfo(map);
@@ -57,7 +54,11 @@ public class MySQLExecutor extends Generator {
 
 	public static void main(String[] args) {
 		MySQLExecutor executor = new MySQLExecutor();
-		executor.execute();
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("user".toLowerCase(), "用户表");
+		map.put("material".toLowerCase(), "物料表");
+		map.put("detection".toLowerCase(), "检测表");
+		executor.execute(map);
 		
 	}
 

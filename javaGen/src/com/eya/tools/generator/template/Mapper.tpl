@@ -97,7 +97,7 @@
 		<insert id="insert" parameterType="${packageName}.${className}">
 			insert into ${tablename}
 			<selectKey keyProperty="${pkRecords[0].property}" order="BEFORE" resultType="String">
-				select SYS_GUID() as  ${pkRecords[0].property}  from dual
+				select replace(uuid(),'-','') as  ${pkRecords[0].property}  from dual
 			</selectKey>
 			<trim prefix="(" suffix=")" suffixOverrides=",">
 				<#list records as rec>
