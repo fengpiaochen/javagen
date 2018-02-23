@@ -64,7 +64,7 @@ public class DB2Generator {
 
             //准备表对象
             List<TableInfo> tables = getTableInfo(map);
-            tool.gen(tables, myfile,TOP_LEVEL,MODULE_NAME);
+            tool.gen(tables, myfile,TOP_LEVEL/*,MODULE_NAME*/);
             System.out.println("=======共计生成表：========" + tables.size() + "张");
         } catch (Exception e) {
             e.printStackTrace();

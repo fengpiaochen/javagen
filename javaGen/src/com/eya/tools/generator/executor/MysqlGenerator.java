@@ -22,7 +22,7 @@ import com.eya.tools.generator.util.TableInfo;
  */
 public class MysqlGenerator {
 
-    private static final String DB_URL      = "jdbc:mysql://localhost:3306/test";
+    private static final String DB_URL      = "jdbc:mysql://localhost:3306/daily";
     private static final String DB_USERL    = "root";
     private static final String DB_PWD      = "root";
 
@@ -56,15 +56,17 @@ public class MysqlGenerator {
         Gen tool = new Gen();
         try {
             // 用于建立目录和写文件
-            MyFile myfile = new MyFile(SRC_FOLDER, WEB_FOLDER);
+            //MyFile myfile = new MyFile(SRC_FOLDER, WEB_FOLDER);
+        	MyFile myfile = new MyFile("c:\\code\\src", "c:\\code\\jsp\\");
 
             // 将需要添加的表存入map中，key为表名，value为生成的实体类的注释
             Map<String, String> map = new HashMap<String, String>();
             map.put("user".toLowerCase(), "用户表");
+            map.put("record".toLowerCase(), "记录表");
 
             //准备表对象
             List<TableInfo> tables = getTableInfo(map);
-            tool.gen(tables, myfile,TOP_LEVEL,MODULE_NAME);
+            tool.gen(tables, myfile,TOP_LEVEL/*,MODULE_NAME*/);
             System.out.println("=======共计生成表：========" + tables.size() + "张");
         } catch (Exception e) {
             e.printStackTrace();

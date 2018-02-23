@@ -33,5 +33,23 @@ public class ${className}ServiceImpl extends BaseServiceImpl<${className}> imple
     public void setBaseMapper() {
         this.baseMapper =  ${classObjectName}Mapper;
     }
+    
+    public void add(${className} entity){
+    	${classObjectName}Mapper.insert(entity);
+    }
+	
+	public void update(${className} entity){
+    	${classObjectName}Mapper.update(entity);
+    }
+	
+	public void delete(${className} entity){
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id", entity.getId());
+    	${classObjectName}Mapper.deleteByPrimaryKey(map);
+    }
+	
+	public List<${className}> selectByPaging(){
+    	return ${classObjectName}Mapper.selectByPaging();
+    }
 	 
 }

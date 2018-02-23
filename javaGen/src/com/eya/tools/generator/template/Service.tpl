@@ -14,5 +14,6 @@ import ${packageName}.${className};
  */
 public interface ${className}Service extends BaseService<${className}>
 {
+	
 	 
 }

@@ -11,7 +11,7 @@ import com.eya.core.mapper.BaseMapper;
  * @author  ${author}
  * @version $Id: ${classObjectName}Mapper.java, v 0.1  ${date?datetime}  ${author} Exp $
  */
-public interface ${className}Mapper extends BaseMapper<${className}>
-{
+public interface ${className}Mapper {
+
 	
 }

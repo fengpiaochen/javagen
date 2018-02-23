@@ -77,13 +77,13 @@ public class Gen {
      * @param myfile 
      * @throws Exception
      */
-    public void gen(List<TableInfo> tables, MyFile myfile, String topLevel, String moduleName) throws Exception {
+    public void gen(List<TableInfo> tables, MyFile myfile, String topLevel) throws Exception {
         // 初始化
         init();
 
         for (TableInfo table : tables) {
             // 装载实体类模板对象
-            EntityTpl entity = getTblInfo(table, MyStringUtil.getEntityName(table.getName()), topLevel, moduleName);
+            EntityTpl entity = getTblInfo(table, MyStringUtil.getEntityName(table.getName()), topLevel, table.getName());
             // 获得主键
             entity.getPkRecords();
             // 载入实体类模板
@@ -153,17 +153,17 @@ public class Gen {
             myfile.writeFile(actionWriter.toString(), MyStringUtil.getEntityName(table.getName()) + "Ctrl", "action",
                 entity.getActionPackage());
 
-            //            Template inputTpl = cfg.getTemplate(module + "/jsp/input.tpl");
-            //            StringWriter inputWriter = new StringWriter();
-            //            inputTpl.process(entity, inputWriter);
-            //            myfile.writeFile(inputWriter.toString(), MyStringUtil.getEntityName(table.getName())
-            //                .toLowerCase(), "input.jsp", null);
-            //
-            //            Template listTpl = cfg.getTemplate(module + "/jsp/list.tpl");
-            //            StringWriter listWriter = new StringWriter();
-            //            listTpl.process(entity, listWriter);
-            //            myfile.writeFile(listWriter.toString(), MyStringUtil.getEntityName(table.getName())
-            //                .toLowerCase(), "list.jsp", null);
+                       /* Template inputTpl = cfg.getTemplate(table.getName() + "/jsp/input.tpl");
+                        StringWriter inputWriter = new StringWriter();
+                        inputTpl.process(entity, inputWriter);
+                        myfile.writeFile(inputWriter.toString(), MyStringUtil.getEntityName(table.getName())
+                            .toLowerCase(), "input.jsp", null);
+            
+                        Template listTpl = cfg.getTemplate(table.getName() + "/jsp/list.tpl");
+                        StringWriter listWriter = new StringWriter();
+                        listTpl.process(entity, listWriter);
+                        myfile.writeFile(listWriter.toString(), MyStringUtil.getEntityName(table.getName())
+                            .toLowerCase(), "list.jsp", null);*/
         }
     }
 }

@@ -35,12 +35,28 @@ public class ${className}Ctrl extends BaseController{
 	
 	
 	@RequestMapping("/list")
-	public String list(PageData<Student> pageData,Model model){ 
+	public String list(PageData<${className}> pageData,Model model){ 
 		${classObjectName}Service.selectByPaging(pageData);
-		model.addAttribute("pageData", pageData);
+		return "${folderName}/list";
+	}
+	
+	@RequestMapping("/add")
+	public String add(${className} entity, Model model){ 
+		${classObjectName}Service.add(entity);
+		return "${folderName}/list";
+	}
+	
+	@RequestMapping("/update")
+	public String update(${className} entity, Model model){ 
+		${classObjectName}Service.update(entity);
 		return "${folderName}/list";
 	}
  
+ 	@RequestMapping("/delete")
+	public String delete(${className} entity, Model model){ 
+		${classObjectName}Service.delete(entity);
+		return "${folderName}/list";
+	}
  	
  
  
