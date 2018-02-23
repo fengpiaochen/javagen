@@ -45,30 +45,7 @@
 	      </foreach>  
 	  </sql>
  
- 	  <!-- 分页查询  MYSQL -->
-	   <select id="selectByPaging"
-			parameterType="com.rubber.common.vo.BaseExample"
-			resultMap="BaseResultMap">
-			select <if test="distinct">distinct</if>
-			<include refid='Base_Column_List' />
-				from ${tablename} where 1 = 1 
-			<if test="_parameter!= null">
-				<include refid="Example_Where_Clause" />
-			</if> 
-			<if test="orderByClause != null">order by  ${orderByClause}</if> 
-			limit #{start}, #{numPerPage}
-		</select>
-			
-		<!-- 统计数据的共计的行数  MYSQL -->
-		<select id="selectPagingCount" parameterType="com.rubber.common.vo.BaseExample" resultType="java.lang.Integer">
-			select count(1)   from ${tablename} where 1 = 1 
-			<if test="_parameter!= null">
-				<include refid="Example_Where_Clause" />
-			</if>
-		</select>
- 
-	   <!-- 分页查询  oracle -->
-	   <!--
+	   <!-- 分页查询 -->
 	   <select id="selectByPaging"
 			parameterType="com.eya.core.vo.BaseExample"
 			resultMap="BaseResultMap">
@@ -83,16 +60,15 @@
 			<![CDATA[ rownum <= ${"#{"}end}]]>      )  t    
 			where  t.r >${"#{"}start}
 		</select>
-		-->	
+			
 		<!-- 统计数据的共计的行数 -->
-		<!--
 		<select id="selectPagingCount" parameterType="com.eya.core.vo.BaseExample" resultType="java.lang.Integer">
 			select count(1)   from ${tablename}   where
 			<if test="_parameter!= null">
 				<include refid="Example_Where_Clause" />
 			</if>
 		</select>
-	    -->
+	 
 		<!-- 按条件新增对象 -->
 		<insert id="insert" parameterType="${packageName}.${className}">
 			insert into ${tablename}
